@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,8 @@ export class HomePage {
   taskList: string[] = [];
   taskName: string = "";
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,
+              public alertCtrl: AlertController) {
   }
 
   addTask() {
@@ -20,6 +21,25 @@ export class HomePage {
       this.taskList.push(task);
       this.taskName = "";
     }
+  }
+
+  async updateTask(index: number) {
+    const alert = await this.alertCtrl.create({
+      header: 'Update Task?',
+      message: 'Type in your new task to update.',
+      inputs: [{ name: 'editTask', placeholder: 'Task' }],
+      buttons: [{ text: 'Cancel', role: 'cancel' },
+      { text: 'Update', handler: data => {
+          this.taskList[index] = data.editTask; }
+      }
+     ],
+    });
+
+    await alert.present();
+  }
+
+  deleteTask(index: number) {
+    this.taskList.splice(index, 1);
   }
 
 }

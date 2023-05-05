@@ -5,7 +5,8 @@
 #### To Do
 
 - [x] Improve task buttons style
-- [ ] Firebase Integration
+- [x] Firebase Integration
+- [ ] CRUD operations implementation with Firebase
 
 #### References
 

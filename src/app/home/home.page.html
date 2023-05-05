@@ -9,7 +9,7 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-input type="text" placeholder="Enter task" [(ngModel)]="taskName" placeholder="Enter task" />
+    <ion-input #taskInput type="text" placeholder="Enter task" [(ngModel)]="taskName" placeholder="Enter task" />
     <div class="item-note" item-end>
       <button ion-button (click)="addTask()"><ion-icon name="add"></ion-icon></button>
     </div>

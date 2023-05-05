@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
@@ -10,9 +10,16 @@ export class HomePage {
 
   taskList: string[] = [];
   taskName: string = "";
+  @ViewChild('taskInput') input : any;
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController) {
+  }
+
+  ionViewDidLoad() {
+    setTimeout(() => {
+      this.input.setFocus();
+    }, 350);
   }
 
   addTask() {
